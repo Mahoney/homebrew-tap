@@ -29,7 +29,6 @@ class DockerLifecycleListener < Formula
     sbin.install "docker-lifecycle-listener.sh"
 
     system "docker", "build", ".", "-t", NOTIFIER_NAME
-    system "docker", "rm", "-f", NOTIFIER_NAME
     system "docker", "run",
            "--detach",
            "--restart", "always",
@@ -89,15 +88,18 @@ class DockerLifecycleListener < Formula
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test docker-lifecycle-listener`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    script_dir=Dir.mktmpdir
+    r, w = IO.pipe
+    pid = Process.spawn("#{sbin}/docker-lifecycle-listener.sh #{script_dir} 47202", out: w, err: [:child, :out])
+    sleep 3
+    Process.kill "TERM", pid
+    Process.waitpid pid
+    w.close
+
+    output = r.read
+    r.close
+
+    assert_includes output, "Listening for commands on port 47202"
+    assert_includes output, "Stopped"
   end
 end
