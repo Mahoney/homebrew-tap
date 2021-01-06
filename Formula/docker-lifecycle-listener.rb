@@ -29,6 +29,11 @@ class DockerLifecycleListener < Formula
     sbin.install "docker-lifecycle-listener.sh"
 
     system "docker", "build", ".", "-t", NOTIFIER_NAME
+    begin
+      system "docker", "rm", "-f", NOTIFIER_NAME
+    rescue BuildError
+      # deliberately swallowing - don't care if the container doesn't exist
+    end
     system "docker", "run",
            "--detach",
            "--restart", "always",
