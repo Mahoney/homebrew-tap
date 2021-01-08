@@ -7,6 +7,7 @@ class DockerTuntapOsx < Formula
 
   bottle :unneeded
 
+  depends_on :tuntap
   depends_on "docker-lifecycle-listener"
 
   def install
