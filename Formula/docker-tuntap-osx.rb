@@ -33,6 +33,9 @@ class DockerTuntapOsx < Formula
 
   def caveats
     <<~EOS
+      This formula depends on the deprecated tuntap formula; details:
+      https://github.com/Mahoney/homebrew-tap/issues/8
+
       A full uninstall requires running the uninstall script *before* doing a
       brew uninstall:
         #{opt_bin}/docker_tap_uninstall.sh
