@@ -1,14 +1,14 @@
 class DockerTuntapOsx < Formula
   desc "Allows access to docker containers by IP address from the host"
   homepage "https://github.com/Mahoney-forks/docker-tuntap-osx"
-  url "https://github.com/Mahoney-forks/docker-tuntap-osx/archive/0.4.0.tar.gz"
-  sha256 "6ee477e1b9813070a381a448ddf67cb4c894236025e171ae0b97166be3988a6a"
+  url "https://github.com/Mahoney-forks/docker-tuntap-osx/archive/0.5.0.tar.gz"
+  sha256 "3cd3ff7022d855c5210893b0db041af71b5ed1f33c536c26e9064dfae1d6e631"
   license "MIT"
 
   bottle :unneeded
 
-  depends_on :tuntap
   depends_on "docker-lifecycle-listener"
+  depends_on :tuntap
 
   def install
     sbin.install "sbin/docker.hyperkit.tuntap.sh"
