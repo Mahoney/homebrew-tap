@@ -1,8 +1,8 @@
 class DockerEtcHosts < Formula
   desc "Adds entries to /etc/hosts to allow addressing containers by name"
   homepage "https://github.com/Mahoney/docker-etc-hosts"
-  url "https://github.com/Mahoney/docker-etc-hosts/archive/0.1.0.tar.gz"
-  sha256 "c8bc1c6af9ca041e12d793df36c1216cfe98f5c2468184ec4fecd69648c8c1ee"
+  url "https://github.com/Mahoney/docker-etc-hosts/archive/0.2.0.tar.gz"
+  sha256 "8cd8a6907be9d28cddbfc180001a8ad2ea312934b77810824037b96bcbbfe35f"
   license "AGPL-3.0-or-later"
 
   bottle :unneeded
