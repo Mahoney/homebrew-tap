@@ -8,7 +8,6 @@ class DockerTuntapOsx < Formula
   bottle :unneeded
 
   depends_on "docker-lifecycle-listener"
-  depends_on :tuntap
 
   def install
     sbin.install "sbin/docker.hyperkit.tuntap.sh"
@@ -33,8 +32,8 @@ class DockerTuntapOsx < Formula
 
   def caveats
     <<~EOS
-      This formula depends on the deprecated tuntap formula; details:
-      https://github.com/Mahoney/homebrew-tap/issues/8
+      This formula requires tuntap formula; see:
+      https://formulae.brew.sh/cask/tuntap
 
       A full uninstall requires running the uninstall script *before* doing a
       brew uninstall:
