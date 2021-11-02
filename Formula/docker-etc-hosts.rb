@@ -5,8 +5,6 @@ class DockerEtcHosts < Formula
   sha256 "13ee41dc5089fc9f595b6dd59ec65585e860cc6af7422e47ce93e553b078d414"
   license "AGPL-3.0-or-later"
 
-  bottle :unneeded
-
   depends_on "bash"
   depends_on "coreutils"
   depends_on "docker-lifecycle-listener"
