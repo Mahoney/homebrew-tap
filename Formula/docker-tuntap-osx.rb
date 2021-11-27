@@ -1,8 +1,8 @@
 class DockerTuntapOsx < Formula
   desc "Allows access to docker containers by IP address from the host"
   homepage "https://github.com/Mahoney-forks/docker-tuntap-osx"
-  url "https://github.com/Mahoney-forks/docker-tuntap-osx/archive/0.5.0.tar.gz"
-  sha256 "3cd3ff7022d855c5210893b0db041af71b5ed1f33c536c26e9064dfae1d6e631"
+  url "https://github.com/Mahoney-forks/docker-tuntap-osx/archive/0.6.0.tar.gz"
+  sha256 "563a4c2a801e67bce9237d73fea45c7c3614c65d1d8c43a9cff2b2b265cc5b49"
   license "MIT"
 
   depends_on "docker-lifecycle-listener"
