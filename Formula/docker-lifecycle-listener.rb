@@ -5,8 +5,7 @@ class DockerRequirement < Requirement
 
   def message
     <<~EOS
-      docker is required; install it via one of:
-        brew install docker
+      docker is required; install it via:
         brew install --cask docker
     EOS
   end
@@ -57,37 +56,12 @@ class DockerLifecycleListener < Formula
     EOS
   end
 
-  plist_options startup: true
-
-  def plist
-    <<~EOS
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-        <dict>
-          <key>Label</key>
-          <string>#{plist_name}</string>
-          <key>EnvironmentVariables</key>
-          <dict>
-            <key>PATH</key>
-            <string>/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
-          </dict>
-          <key>ProgramArguments</key>
-          <array>
-            <string>#{opt_sbin}/docker-lifecycle-listener.sh</string>
-            <string>#{etc}/docker-lifecycle-listener.d</string>
-          </array>
-          <key>RunAtLoad</key>
-          <true/>
-          <key>KeepAlive</key>
-          <true/>
-          <key>StandardOutPath</key>
-          <string>#{var}/log/docker-lifecycle-listener.log</string>
-          <key>StandardErrorPath</key>
-          <string>#{var}/log/docker-lifecycle-listener.log</string>
-        </dict>
-      </plist>
-    EOS
+  service do
+    run [opt_sbin/"docker-lifecycle-listener.sh", etc/"docker-lifecycle-listener.d"]
+    log_path var/"log/docker-lifecycle-listener.log"
+    error_log_path var"/log/docker-lifecycle-listener.log"
+    keep_alive true
+    require_root true
   end
 
   test do
