@@ -59,7 +59,7 @@ class DockerLifecycleListener < Formula
   service do
     run [opt_sbin/"docker-lifecycle-listener.sh", etc/"docker-lifecycle-listener.d"]
     log_path var/"log/docker-lifecycle-listener.log"
-    error_log_path var"/log/docker-lifecycle-listener.log"
+    error_log_path var/"log/docker-lifecycle-listener.log"
     keep_alive true
     require_root true
   end
