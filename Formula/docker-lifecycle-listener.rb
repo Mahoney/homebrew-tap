@@ -14,7 +14,7 @@ end
 class DockerLifecycleListener < Formula
   desc "Allows running arbitrary commands on start and stop of the docker daemon"
   homepage "https://github.com/Mahoney/docker-lifecycle-listener"
-  url "https://github.com/Mahoney/docker-lifecycle-listener/archive/1.0.3.tar.gz"
+  url "https://github.com/Mahoney/docker-lifecycle-listener/refs/tags/1.0.3"
   sha256 "51a5e5d20389065e19be4011072d5032507f2a5db68d6e5a9c8c067e0093511b"
   license "AGPL-3.0-or-later"
 
