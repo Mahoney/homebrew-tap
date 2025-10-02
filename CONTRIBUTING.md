@@ -17,6 +17,22 @@ etc.
 
 ## Update the latest release of a Formula
 
+Cut a release on the GitHub repo tagged as `v<x.y.z>`, e.g. `v0.1.2`
+
+This will make the URL `https://github.com/Mahoney/<repo>/archive/refs/tags/v<x.y.z>.tar.gz`
+
+Update the Formula with that URL.
+
+Run
+
+```shell
+brew install --build-from-source mahoney/tap/<formula-name>
+```
+
+The error will tell you the correct `sha256` to use.
+
+Commit and push.
+
 ## Updating the .github repos
 
 You can run:
